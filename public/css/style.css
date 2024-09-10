@@ -1,0 +1,26 @@
+.drop-zone {
+  max-width: 300px;
+  height: 200px;
+  padding: 25px;
+  border: 2px dashed #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+.drop-zone.dragover {
+  border-color: #000000;
+}
+.drop-zone.uploaded {
+  background-color: #e0ffe0;
+  border-color: #00cc00;
+}
+#fileUploadedMessage {
+  margin-top: 20px;
+  color: green;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}

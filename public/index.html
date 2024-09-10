@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload and Processing</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      #uploadForm {
+        margin-bottom: 20px;
+      }
+      #result {
+        white-space: pre-wrap;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>File Upload and Processing</h1>
+    <form id="uploadForm">
+      <input type="file" id="fileInput" accept=".txt,.pdf,.docx" required />
+      <button type="submit">Upload and Process</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+      document
+        .getElementById("uploadForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const fileInput = document.getElementById("fileInput");
+          const resultDiv = document.getElementById("result");
+
+          const formData = new FormData();
+          formData.append("file", fileInput.files[0]);
+
+          try {
+            const response = await fetch("/upload", {
+              method: "POST",
+              body: formData,
+            });
+
+            if (response.ok) {
+              const result = await response.text();
+              resultDiv.textContent = result;
+            } else {
+              resultDiv.textContent = "Error: " + response.statusText;
+            }
+          } catch (error) {
+            resultDiv.textContent = "Error: " + error.message;
+          }
+        });
+    </script>
+  </body>
+</html>

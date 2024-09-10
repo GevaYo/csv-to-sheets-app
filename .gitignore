@@ -1,0 +1,12 @@
+# Ignore node_modules (dependencies)
+node_modules/
+
+# Ignore environment variables
+.env
+
+# Ignore OAuth tokens and credentials
+token.json
+credentials.json
+
+# Ignore uploads (if you're saving temporary files)
+uploads/
