@@ -36,6 +36,7 @@ const CsvUpload = () => {
     } catch (error) {
       setError(error.message);
     } finally {
+      setFile(null);
       setIsLoading(false);
     }
   };
